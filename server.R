@@ -17,9 +17,9 @@ plotParkingTime <- function(){
   
   plot_parking_time<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_time, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Time to find Parking: ', parking_time, 'min'))) + geom_line()+
     facet_wrap(.~hour_range, ncol=2) + 
-    labs(x = '', y='') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+    labs(x = 'Length of stay (min)', y='Time to find Parking (min)') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
     ggtitle('Time to find Parking-Length of Stay')
-  plot_parking_time <- ggplotly(, tooltip = c('text'), source = 'B') %>% layout(yaxis=list(title='Time to find Parking\n (min)'), xaxis =list(title ='Length of stay (min)'), font = list(size=11))
+  plot_parking_time <- ggplotly(, tooltip = c('text'), source = 'B')
   
   return(plot_parking_time)
 }
@@ -32,11 +32,11 @@ plotDistance<- function(){
     key_list[[i]] <- c(key[i], maximum_stay_vector)
   }
   
-  plot_parking_distance<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_distance, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Distance to destination: ', parking_distance, 'mts'))) + geom_line()+
+  plot_parking_distance<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_distance, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Distance to destination: ', parking_distance, 'min'))) + geom_line()+
     facet_wrap(.~hour_range, ncol=2) +
-    labs(x = '', y='') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0))) +
+    labs(x = 'Length of stay (min)', y='Distance from Parking to destination (mts)') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
     ggtitle('Distance Parking to dest-Length of stay')
-  plot_parking_distance <- ggplotly(, tooltip = c('text'), source = 'B')  %>% layout(yaxis=list(title='Distance from Parking\nto destination (mts)'), xaxis =list(title ='Length of stay (min)'), font = list(size=11))
+  plot_parking_distance <- ggplotly(, tooltip = c('text'), source = 'B')
   
   return(plot_parking_distance)
 }
