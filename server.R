@@ -18,7 +18,7 @@ plotParkingTime <- function(){
   plot_parking_time<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_time, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Time to find Parking: ', parking_time, 'min'))) + geom_line()+
     facet_wrap(.~hour_range, ncol=2) + 
     labs(x = '', y='') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-    ggtitle('Time to find Parking-Length of Stay')
+    ggtitle('Time to find Parking vs Length of Stay')
   plot_parking_time <- ggplotly(, tooltip = c('text'), source = 'B') %>% layout(yaxis=list(title='Time to find Parking\n (min)'), xaxis =list(title ='Length of stay (min)'), font = list(size=11))
   
   return(plot_parking_time)
