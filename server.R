@@ -32,7 +32,7 @@ plotDistance<- function(){
     key_list[[i]] <- c(key[i], maximum_stay_vector)
   }
   
-  plot_parking_distance<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_distance, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Distance to destination: ', parking_distance, 'min'))) + geom_line()+
+  plot_parking_distance<- ggplot(data=parking_df, aes(x = length_of_stay, y = parking_distance, group = 1, key = key_list, text = paste('</br>Maximum stay:' , length_of_stay, 'min</br>Avg Distance to destination: ', parking_distance, 'mts'))) + geom_line()+
     facet_wrap(.~hour_range, ncol=2) +
     labs(x = '', y='') + theme(legend.position='none',panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0))) +
     ggtitle('Distance Parking to dest-Length of stay')
